@@ -7,6 +7,12 @@ public class Sort {
         return x;
     }
 
+    public static void swap(String[] x, int a, int b) {
+        String temp = x[a];
+        x[a] = x[b];
+        x[b] = temp;
+    }
+
     public static String findSmallest(String[] x) {
 
         String smallest = x[0];

@@ -25,7 +25,7 @@ public class TestSort {
 
     }
 
-    public static void testFindSmalltest() {
+    public static void testFindSmallest() {
         String[] input = {"i", "have", "an", "egg"};
         String expected = "an";
 
@@ -33,9 +33,19 @@ public class TestSort {
         assertEquals(expected, actual);
     }
 
+    public static void testSwap() {
+        String[] input = {"i", "have", "an", "egg"};
+        String[] expected = {"an", "have", "i", "egg"};
+
+        Sort.swap(input, 0, 2);
+
+        assertArrayEquals(expected, input);
+    }
+
     public static void main(String[] args) {
 
-        testFindSmalltest();
+        testFindSmallest();
+        testSwap();
 
         //testSortWithoutJUnit();
         //testSortWithJUnit();
