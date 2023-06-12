@@ -25,11 +25,20 @@ public class TestSort {
 
     }
 
+    public static void testFindSmalltest() {
+        String[] input = {"i", "have", "an", "egg"};
+        String expected = "an";
+
+        String actual = Sort.findSmallest(input);
+        assertEquals(expected, actual);
+    }
 
     public static void main(String[] args) {
 
-        testSortWithoutJUnit();
-        testSortWithJUnit();
+        testFindSmalltest();
+
+        //testSortWithoutJUnit();
+        //testSortWithJUnit();
 
     }
 }
