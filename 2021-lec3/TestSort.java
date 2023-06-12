@@ -1,3 +1,6 @@
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 public class TestSort {
 
     public static void testSortWithoutJUnit() {
@@ -18,10 +21,15 @@ public class TestSort {
         String[] expected = {"an", "egg", "have", "i"};
 
         Sort.sort(input);
+        assertArrayEquals(expected, input);
 
     }
 
+
     public static void main(String[] args) {
+
         testSortWithoutJUnit();
+        testSortWithJUnit();
+
     }
 }
