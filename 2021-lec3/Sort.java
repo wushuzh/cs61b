@@ -13,14 +13,14 @@ public class Sort {
         x[b] = temp;
     }
 
-    public static String findSmallest(String[] x) {
+    public static int findSmallest(String[] x) {
+        int smallestIdx = 0;
 
-        String smallest = x[0];
         for(int i = 0; i < x.length; i++) {
-            if (x[i].compareTo(smallest) < 0) {
-                smallest = x[i];
+            if (x[i].compareTo(x[smallestIdx]) < 0) {
+                smallestIdx = i;
             }
         }
-        return smallest;
+        return smallestIdx;
     }
 }

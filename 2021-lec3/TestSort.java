@@ -28,9 +28,10 @@ public class TestSort {
     public static void testFindSmallest() {
         String[] input = {"i", "have", "an", "egg"};
         String expected = "an";
+        int expectedIdx = 2;
 
-        String actual = Sort.findSmallest(input);
-        assertEquals(expected, actual);
+        int actualIdx = Sort.findSmallest(input);
+        assertEquals(expectedIdx, actualIdx);
     }
 
     public static void testSwap() {
