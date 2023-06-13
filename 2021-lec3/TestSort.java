@@ -30,7 +30,7 @@ public class TestSort {
         String expected = "an";
         int expectedIdx = 2;
 
-        int actualIdx = Sort.findSmallest(input);
+        int actualIdx = Sort.findSmallest(input, 0);
         assertEquals(expectedIdx, actualIdx);
     }
 
@@ -48,8 +48,8 @@ public class TestSort {
         testFindSmallest();
         testSwap();
 
-        //testSortWithoutJUnit();
-        //testSortWithJUnit();
+        testSortWithoutJUnit();
+        testSortWithJUnit();
 
     }
 }

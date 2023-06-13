@@ -1,11 +1,23 @@
 public class Sort {
 
-    public static String[] sort(String[] x) {
+    public static void sort(String[] x) {
         // find the smallest entry from the array
         // swap it with front entry
         // Selection sort the rest
-        return x;
+        sort(x, 0);
     }
+
+    public static void sort(String[] x, int fromIdx) {
+        if (fromIdx == x.length) {
+            return;
+        }
+        int smallIdx = findSmallest(x, fromIdx);
+        swap(x, fromIdx, smallIdx);
+        sort(x, fromIdx+1);
+
+    }
+
+
 
     public static void swap(String[] x, int a, int b) {
         String temp = x[a];
@@ -13,10 +25,10 @@ public class Sort {
         x[b] = temp;
     }
 
-    public static int findSmallest(String[] x) {
-        int smallestIdx = 0;
+    public static int findSmallest(String[] x, int fromIdx) {
+        int smallestIdx = fromIdx;
 
-        for(int i = 0; i < x.length; i++) {
+        for(int i = fromIdx; i < x.length; i++) {
             if (x[i].compareTo(x[smallestIdx]) < 0) {
                 smallestIdx = i;
             }
