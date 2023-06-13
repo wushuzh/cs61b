@@ -1,9 +1,12 @@
+import org.junit.Test;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class TestSort {
 
-    public static void testSortWithoutJUnit() {
+    @Test
+    public void testSortWithoutJUnit() {
         String[] input = {"i", "have", "an", "egg"};
         String[] expected = {"an", "egg", "have", "i"};
 
@@ -16,7 +19,8 @@ public class TestSort {
         }
     }
 
-    public static void testSortWithJUnit() {
+    @Test
+    public void testSortWithJUnit() {
         String[] input = {"i", "have", "an", "egg"};
         String[] expected = {"an", "egg", "have", "i"};
 
@@ -25,7 +29,8 @@ public class TestSort {
 
     }
 
-    public static void testFindSmallest() {
+    @Test
+    public void testFindSmallest() {
         String[] input = {"i", "have", "an", "egg"};
         String expected = "an";
         int expectedIdx = 2;
@@ -34,22 +39,13 @@ public class TestSort {
         assertEquals(expectedIdx, actualIdx);
     }
 
-    public static void testSwap() {
+    @Test
+    public void testSwap() {
         String[] input = {"i", "have", "an", "egg"};
         String[] expected = {"an", "have", "i", "egg"};
 
         Sort.swap(input, 0, 2);
 
         assertArrayEquals(expected, input);
-    }
-
-    public static void main(String[] args) {
-
-        testFindSmallest();
-        testSwap();
-
-        testSortWithoutJUnit();
-        testSortWithJUnit();
-
     }
 }
