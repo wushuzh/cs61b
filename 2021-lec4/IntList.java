@@ -50,6 +50,27 @@ public class IntList {
         return null;
     }
 
+    public static IntList iterativeIncrList(IntList L, int x) {
+        if (L == null) {
+            return null;
+        }
+
+
+        IntList newL = new IntList(L.first + x, null);
+
+        IntList p = newL;
+        IntList orignialL = L.rest;
+
+        while (orignialL != null) {
+            p.rest = new IntList( orignialL.first + x, null);
+            p = p.rest;
+            orignialL = orignialL.rest;
+        }
+
+        return newL;
+
+    }
+
     /** Returns an IntList identical to L, but with all values incremented by x.
      * Not allowed to use 'new' (to save memory
      * */
@@ -60,6 +81,15 @@ public class IntList {
         L.first += x;
         L.rest = dincrList(L.rest, x);
 
+        return L;
+    }
+
+    public static IntList iterativeDincrList(IntList L, int x) {
+        IntList p = L;
+        while (p != null){
+            p.first += x;
+            p = p.rest;
+        }
         return L;
     }
 
@@ -81,11 +111,31 @@ public class IntList {
         System.out.println(L1.get(1));
         System.out.println(L1.get(2));
 
+        System.out.println("iterative version of incrList by 10:");
+        IntList L1plus10 = iterativeIncrList(L1, 10);
+        System.out.println(L1plus10.get(0));
+        System.out.println(L1plus10.get(1));
+        System.out.println(L1plus10.get(2));
+
+        System.out.println(L1.iterativeGet(0));
+        System.out.println(L1.iterativeGet(1));
+        System.out.println(L1.iterativeGet(2));
+
         System.out.println("dIncrList by 5:");
         IntList L2plus5 = dincrList(L1, 5);
         System.out.println(L2plus5.get(0));
         System.out.println(L2plus5.get(1));
         System.out.println(L2plus5.get(2));
+
+        System.out.println(L1.iterativeGet(0));
+        System.out.println(L1.iterativeGet(1));
+        System.out.println(L1.iterativeGet(2));
+
+        System.out.println("iterative version of dIncrList by 5:");
+        IntList L3plus5 = iterativeDincrList(L1, 5);
+        System.out.println(L3plus5.get(0));
+        System.out.println(L3plus5.get(1));
+        System.out.println(L3plus5.get(2));
 
         System.out.println(L1.iterativeGet(0));
         System.out.println(L1.iterativeGet(1));
