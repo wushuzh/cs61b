@@ -12,6 +12,12 @@ public class SLList {
     private IntNode first;
     private int size;
 
+
+    public SLList() {
+        first = null;
+        size = 0;
+    }
+
     public SLList(int x) {
         first = new IntNode(x, null);
         size = 1;
@@ -28,18 +34,26 @@ public class SLList {
 
     public void addLast(int x) {
 
+        size += 1;
+
         IntNode p = first;
+        if (first == null) {
+            first = new IntNode(x, null);
+            return;
+        }
 
         while (p.next != null) {
             p = p.next;
         }
-        p.next = new IntNode(x, null);
 
-        size += 1;
+        p.next = new IntNode(x, null);
 
     }
 
     public int recursiveSize(IntNode n) {
+        if (n == null) {
+            return 0;
+        }
         if (n.next == null) {
             return 1;
         }
@@ -70,10 +84,11 @@ public class SLList {
     public static void main(String[] args) {
         //IntList oldL = new IntList(10, null);
         //System.out.println(oldL.first);
-        SLList newL = null;
+        SLList newL = new SLList();
         System.out.println(newL);
+        System.out.println(newL.recursiveSize());
 
-        newL = new SLList(10);
+        newL.addLast(10);
         System.out.println(newL.first.item);
         System.out.println(newL.getFirst());
 
