@@ -10,13 +10,16 @@ public class SLList {
     }
 
     private IntNode first;
+    private int size;
 
     public SLList(int x) {
         first = new IntNode(x, null);
+        size = 1;
     }
 
     public void addFirst(int x) {
         first = new IntNode(x, first);
+        size += 1;
     }
 
     public int getFirst() {
@@ -32,18 +35,23 @@ public class SLList {
         }
         p.next = new IntNode(x, null);
 
+        size += 1;
+
     }
 
-    public int size(IntNode n) {
+    public int recursiveSize(IntNode n) {
         if (n.next == null) {
             return 1;
         }
-        return 1 + size(n.next);
+        return 1 + recursiveSize(n.next);
     }
-    public int size() {
-        return size(first);
+    public int recursiveSize() {
+        return recursiveSize(first);
     }
 
+    public int size() {
+        return size;
+    }
 
     public String toString() {
         String resultStr = null;
@@ -74,7 +82,8 @@ public class SLList {
 
         newL.addLast(11);
         System.out.println(newL);
-        System.out.println("The total size of SLList is "+ newL.size());
+        System.out.println("Calc the total size of SLList on the fly: "+ newL.recursiveSize());
+        System.out.println("Get the cached size of SLList is "+ newL.size());
 
     }
 }
