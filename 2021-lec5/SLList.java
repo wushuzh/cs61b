@@ -23,15 +23,46 @@ public class SLList {
         return first.item;
     }
 
+    public void addLast(int x) {
+
+        IntNode p = first;
+
+        while (p.next != null) {
+            p = p.next;
+        }
+        p.next = new IntNode(x, null);
+
+    }
+
+    public String toString() {
+        String resultStr = null;
+        IntNode p = first;
+        while (p != null) {
+            if (resultStr == null) {
+                resultStr = String.valueOf(p.item);
+            } else {
+                resultStr += " -> " + p.item;
+            }
+            p = p.next;
+        }
+        return resultStr;
+    }
+
     public static void main(String[] args) {
         //IntList oldL = new IntList(10, null);
         //System.out.println(oldL.first);
+        SLList newL = null;
+        System.out.println(newL);
 
-        SLList newL = new SLList(10);
+        newL = new SLList(10);
         System.out.println(newL.first.item);
         System.out.println(newL.getFirst());
 
         newL.addFirst(9);
         System.out.println(newL.getFirst());
+
+        newL.addLast(11);
+        System.out.println(newL);
+
     }
 }
