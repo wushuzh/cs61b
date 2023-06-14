@@ -9,38 +9,36 @@ public class SLList {
         }
     }
 
-    private IntNode first;
+    /* The first item (if it exists) is at sentinel.next. */
+    private IntNode sentinel;
     private int size;
 
 
     public SLList() {
-        first = null;
+        sentinel = new IntNode(42, null);
         size = 0;
     }
 
     public SLList(int x) {
-        first = new IntNode(x, null);
+        this();
+        sentinel.next = new IntNode(x, null);
         size = 1;
     }
 
     public void addFirst(int x) {
-        first = new IntNode(x, first);
+        sentinel.next = new IntNode(x, sentinel.next);
         size += 1;
     }
 
     public int getFirst() {
-        return first.item;
+        return sentinel.next.item;
     }
 
     public void addLast(int x) {
 
         size += 1;
 
-        IntNode p = first;
-        if (first == null) {
-            first = new IntNode(x, null);
-            return;
-        }
+        IntNode p = sentinel;
 
         while (p.next != null) {
             p = p.next;
@@ -60,7 +58,7 @@ public class SLList {
         return 1 + recursiveSize(n.next);
     }
     public int recursiveSize() {
-        return recursiveSize(first);
+        return recursiveSize(sentinel.next);
     }
 
     public int size() {
@@ -69,7 +67,7 @@ public class SLList {
 
     public String toString() {
         String resultStr = null;
-        IntNode p = first;
+        IntNode p = sentinel.next;
         while (p != null) {
             if (resultStr == null) {
                 resultStr = String.valueOf(p.item);
@@ -89,7 +87,6 @@ public class SLList {
         System.out.println(newL.recursiveSize());
 
         newL.addLast(10);
-        System.out.println(newL.first.item);
         System.out.println(newL.getFirst());
 
         newL.addFirst(9);
