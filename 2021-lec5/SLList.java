@@ -34,6 +34,17 @@ public class SLList {
 
     }
 
+    public int size(IntNode n) {
+        if (n.next == null) {
+            return 1;
+        }
+        return 1 + size(n.next);
+    }
+    public int size() {
+        return size(first);
+    }
+
+
     public String toString() {
         String resultStr = null;
         IntNode p = first;
@@ -63,6 +74,7 @@ public class SLList {
 
         newL.addLast(11);
         System.out.println(newL);
+        System.out.println("The total size of SLList is "+ newL.size());
 
     }
 }
