@@ -54,4 +54,14 @@ public class AListTest {
         assertEquals(1, L.size());
         assertEquals(9, L.get(0));
     }
+
+    @Test
+    public void AddAndResizeArray() {
+        AList L = new AList();
+        for(int i = 0; i < 20; i++) {
+            L.addLast(i);
+            assertEquals(i, L.getLast());
+            assertEquals(i+1, L.size());
+        }
+    }
 }

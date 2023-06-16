@@ -18,7 +18,16 @@ public class AList {
 
     /** Inserts X into the back of the list. */
     public void addLast(int x) {
+        if (size == items.length) {
+            resize(size+1);
+        }
         items[size++] = x;
+    }
+
+    private void resize(int capacity) {
+        int[] newItems = new int[capacity];
+        System.arraycopy(items, 0, newItems, 0, size);
+        items = newItems;
     }
 
     /** Returns the item from the back of the list. */
