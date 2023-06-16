@@ -88,6 +88,22 @@ public class LinkedListDeque<T> {
         return null;
     }
 
+    public T getRecursive(int i) {
+        if (i >= size || isEmpty()) return null;
+        return getRecursive(this, i);
+    }
+
+    private T getRecursive(LinkedListDeque<T> lld, int i) {
+        if (i == 0) return lld.sentFront.next.item;
+        LinkedListDeque<T> lldOneLess = new LinkedListDeque<>();
+        Node secondNode = lld.sentFront.next.next;
+
+        lldOneLess.sentFront.next = secondNode;
+        lldOneLess.sentBack = lld.sentBack;
+        return getRecursive(lldOneLess, i-1);
+
+    }
+
     public void printDeque() {
         String result = "";
         Node p = sentFront.next;

@@ -130,4 +130,26 @@ public class LinkedListDequeTest {
         }
 
     }
+
+    @Test
+    /* check index with value with a few due to performance with get */
+    public void LLDequeGetTest() {
+        LinkedListDeque<Integer> lld = new LinkedListDeque<>();
+
+        for(int i = 9; i >= 0; i--) {
+            lld.addFirst(i);
+        }
+
+        assertEquals("The size of list should be 10", 10, lld.size());
+
+        for(int i = 0; i < 20; i++) {
+            if (i < 10) {
+                assertEquals("Get the first half using iterative get method", i, (int) lld.get(i));
+                assertEquals("Get the first half using iterative get method", i, (int) lld.getRecursive(i));
+            } else {
+                assertEquals("Get not exist index get null", null, lld.get(i));
+                assertEquals("Get not exist index get null", null, lld.getRecursive(i));
+            }
+        }
+    }
 }
