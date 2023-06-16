@@ -71,5 +71,10 @@ public class AListTest {
         for(int i = 0; i < 100_0000; i++) {
             L.addLast(i);
         }
+
+        for(int i = 99_9999; i >= 0; i--) {
+            assertEquals(i, L.removeLast());
+            assertEquals(i, L.size());
+        }
     }
 }

@@ -47,6 +47,9 @@ public class AList {
     /** Deletes item from back of the list and
      * returns deleted item. */
     public int removeLast() {
-        return items[--size];
+        if ((size / items.length) < 1/4) resize(items.length/2);
+        int lastItem = getLast();
+        size = size - 1;
+        return lastItem;
     }
 }
