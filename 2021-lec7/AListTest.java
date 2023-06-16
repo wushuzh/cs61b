@@ -64,4 +64,12 @@ public class AListTest {
             assertEquals(i+1, L.size());
         }
     }
+
+    @Test
+    public void addManyNumbersTest() {
+        AList L = new AList();
+        for(int i = 0; i < 100_0000; i++) {
+            L.addLast(i);
+        }
+    }
 }
