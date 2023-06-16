@@ -6,7 +6,7 @@ public class LinkedListDeque<T> {
     private Node sentBack;
     private int size;
 
-    public class Node<T> {
+    public class Node {
         public T item;
         public Node next;
         public Node prev;
@@ -19,8 +19,8 @@ public class LinkedListDeque<T> {
     }
 
     public LinkedListDeque() {
-        sentFront = new Node(null, Integer.MIN_VALUE, null);
-        sentBack = new Node(null, Integer.MAX_VALUE, null);
+        sentFront = new Node(null, null, null);
+        sentBack = new Node(null, null, null);
         sentFront.next = sentBack;
         sentBack.prev = sentFront;
         size = 0;
@@ -61,7 +61,7 @@ public class LinkedListDeque<T> {
         newFirst.prev = sentFront;
         size--;
 
-        return (T) oldFirst.item;
+        return oldFirst.item;
     }
 
     public T removeLast() {
@@ -74,14 +74,14 @@ public class LinkedListDeque<T> {
         sentBack.prev = newLast;
         size--;
 
-        return (T) oldLast.item;
+        return oldLast.item;
     }
 
     public T get(int index) {
 
         Node p = sentFront;
         while (p.next != sentBack) {
-            if (index == 0) return (T) p.next.item;
+            if (index == 0) return p.next.item;
             p = p.next;
             index--;
         }
