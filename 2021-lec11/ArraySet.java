@@ -1,3 +1,7 @@
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 public class ArraySet<T> {
 
     private int size;
@@ -33,6 +37,28 @@ public class ArraySet<T> {
         return size;
     }
 
+    public Iterator<T> iterator() {
+        return new ArraySetIterator();
+    }
+
+    private class ArraySetIterator implements Iterator<T> {
+
+        private int pos;
+
+        public ArraySetIterator() {
+            pos = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return pos < size;
+        }
+
+        @Override
+        public T next() {
+            return items[pos++];
+        }
+    }
 
     public static void main(String[] args) {
         ArraySet<String> as = new ArraySet<>();
@@ -46,5 +72,20 @@ public class ArraySet<T> {
         System.out.println("Set contains 4 ? " + as.contains("four"));
         System.out.println("Set contains 1 ? " + as.contains("one"));
 
+        Iterator<String> aseer = as.iterator();
+
+        while (aseer.hasNext()) {
+            System.out.println(aseer.next());
+        }
+
+        Set<Integer> javaset = new HashSet<>();
+        javaset.add(1);
+        javaset.add(2);
+        javaset.add(3);
+
+        Iterator<Integer> seer = javaset.iterator();
+        while (seer.hasNext()) {
+            System.out.println(seer.next());
+        }
     }
 }
