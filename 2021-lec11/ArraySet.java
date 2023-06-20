@@ -17,7 +17,12 @@ public class ArraySet<T> {
         return false;
     }
 
+    /* Associates the specified value with the specified key in this map.
+       Throws an IllegalArgumentException if the key is null. */
     public void add(T item) {
+        if (item == null) {
+            throw new IllegalArgumentException("Cannot add null!");
+        }
         if (!contains(item)) {
             items[size++] = item;
         }

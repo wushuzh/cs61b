@@ -1,14 +1,15 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ArraySetTest {
     @Test
-    public void addNullIntoSet() {
+    public void addNullIntoSetThrowIllegalArgumentException() {
         ArraySet<String> as = new ArraySet<>();
-        as.add(null);
-        as.add("one");
-
+        try {
+            as.add(null);
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Cannot add null!");
+        }
     }
 }
