@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class ArraySet<T> {
+public class ArraySet<T> implements Iterable<T> {
 
     private int size;
     private T[] items;
@@ -78,6 +78,10 @@ public class ArraySet<T> {
             System.out.println(aseer.next());
         }
 
+        for(String s: as) {
+            System.out.println(s);
+        }
+
         Set<Integer> javaset = new HashSet<>();
         javaset.add(1);
         javaset.add(2);
@@ -87,5 +91,10 @@ public class ArraySet<T> {
         while (seer.hasNext()) {
             System.out.println(seer.next());
         }
+
+        for(Integer i : javaset) {
+            System.out.println(i);
+        }
+
     }
 }
