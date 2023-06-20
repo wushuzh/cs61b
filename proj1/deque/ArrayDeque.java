@@ -59,7 +59,7 @@ public class ArrayDeque<T> {
         items[nextFirst] = item;
 
         //calc the next valid First pos
-        nextFirst = calcLeftDex(nextFirst);
+        nextFirst = calcLeftDex(nextFirst, items.length);
         if (nextFirst == nextLast) {
             doubleArray(items.length * 2);
             nextLast = nextFirst + 1 + size;
@@ -68,8 +68,83 @@ public class ArrayDeque<T> {
     }
 
     /** calc the index the left element */
-    private int calcLeftDex(int index) {
+    private int calcLeftDex(int index, int length) {
         index--;
-        return (index + items.length) % items.length;
+        return (index + length) % length;
+    }
+
+    public T removeLast() {
+        // error 1: check if there is any elements existing
+        if (size == 0) return null;
+
+        size--;
+        int lastItemDex = calcLeftDex(nextLast, items.length);
+        T item = items[lastItemDex];
+        items[lastItemDex] = null;
+        // error 1: remember to reset the nextLast
+        nextLast = lastItemDex;
+
+        // error 1: for too small size, don't need to shrink
+        if (items.length >= 16 && size < items.length/4) {
+            // error 1: the target size should be half of array, not half of deque size
+            shrinkArray(items.length/2);
+        }
+        return item;
+    }
+
+    private void shrinkArray(int newSize) {
+        T[] smallArray = (T[]) new Object[newSize];
+        int oldArrayDex = calcRightDex(nextFirst);
+
+        int i = newSize * 3 / 8;
+        // error 1: forget to reset nextFirst
+        // error 1: calc nextFirst based on left pos of i
+        nextFirst = calcLeftDex(i, newSize);
+
+        // error 1: copy until next invalid pos
+        while (oldArrayDex != nextLast) {
+            smallArray[i] = items[oldArrayDex];
+            oldArrayDex = calcRightDex(oldArrayDex);
+            i++;
+        }
+        // error 1: reset nextLast;
+        nextLast = i;
+        // error 1: use smaller array
+        items = smallArray;
+    }
+
+    public T removeFirst() {
+        if (size == 0) return null;
+        size--;
+        int firstItemDex = calcRightDex(nextFirst);
+        T firstItem = items[firstItemDex];
+        items[firstItemDex] = null;
+        nextFirst = firstItemDex;
+
+        // shrink if necessary
+        // error 1: always use items.length for actually array
+        if (items.length >= 16 && size < items.length/4) {
+            shrinkArray(items.length/2);
+        }
+
+        return firstItem;
+    }
+
+    public T get(int index) {
+        if (index >= size) return null;
+        int itemDex = calcRightDex(nextFirst + index);
+        return items[itemDex];
+    }
+
+    public void printDeque() {
+
+        int firstItemDex = calcRightDex(nextFirst);
+
+        // error 1: loop until next invalid element
+        while (firstItemDex != nextLast) {
+            System.out.print(items[firstItemDex] + " ");
+            firstItemDex = calcRightDex(firstItemDex);
+        }
+        System.out.println();
     }
 }
