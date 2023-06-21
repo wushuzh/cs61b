@@ -3,6 +3,19 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ArraySetTest {
+
+    @Test
+    public void testStaticOfCreation() {
+        ArraySet<String> as = ArraySet.of("any1", "anyone", "any 1");
+
+        as.contains("any1");
+        as.contains("anyone");
+        as.contains("any 1");
+
+        assertEquals(3, as.size());
+
+    }
+
     @Test
     public void addNullIntoSetThrowIllegalArgumentException() {
         ArraySet<String> as = new ArraySet<>();

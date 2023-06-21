@@ -14,6 +14,18 @@ public class ArraySet<T> implements Iterable<T> {
         items = (T[]) new Object[42];
     }
 
+    /* new syntax: var argument
+    * Static method cannot access instance variable information and its type T
+    * need another type name, let's say "Glerp"
+    * */
+    public static <Glerp> ArraySet<Glerp> of(Glerp... stuff) {
+        ArraySet<Glerp> returnArraySet = new ArraySet<>();
+        for(Glerp i: stuff) {
+            returnArraySet.add(i);
+        }
+        return returnArraySet;
+    }
+
     public boolean contains(T item) {
         for(int i = 0; i < size; i++) {
             if (items[i].equals(item)) {
