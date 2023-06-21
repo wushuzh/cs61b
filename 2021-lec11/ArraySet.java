@@ -62,6 +62,17 @@ public class ArraySet<T> implements Iterable<T> {
 
     @Override
     public String toString() {
+        StringBuilder returnSB = new StringBuilder("{");
+        for(int i = 0; i < size - 1; i++) {
+            returnSB.append(items[i].toString());
+            returnSB.append(",");
+        }
+        returnSB.append(items[size-1]);
+        returnSB.append("}");
+        return returnSB.toString();
+    }
+
+    public String toStringSlow() {
         String resultString = "{";
         for(int i = 0; i < size; i++) {
             resultString += items[i].toString();
