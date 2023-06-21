@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.List;
 
 public class ArraySet<T> implements Iterable<T> {
 
@@ -62,6 +64,15 @@ public class ArraySet<T> implements Iterable<T> {
 
     @Override
     public String toString() {
+        List<String> itemsOfStringForm = new ArrayList<>();
+        // error 1: use "this" in foreach loop, not items !!!
+        for(T i: this) {
+            itemsOfStringForm.add(i.toString());
+        }
+        return "{" + String.join(", ", itemsOfStringForm) + "}";
+    }
+
+    public String toStringStringBuilderVersion() {
         StringBuilder returnSB = new StringBuilder("{");
         for(int i = 0; i < size - 1; i++) {
             returnSB.append(items[i].toString());
