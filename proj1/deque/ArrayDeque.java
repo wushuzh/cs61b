@@ -1,5 +1,7 @@
 package deque;
 
+import afu.org.checkerframework.checker.oigj.qual.O;
+
 import java.util.Iterator;
 
 public class ArrayDeque<T> implements Iterable<T> {
@@ -169,5 +171,18 @@ public class ArrayDeque<T> implements Iterable<T> {
             pos = calcRightDex(pos);
             return returnItem;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof ArrayDeque otherArrayDeque) {
+            if (otherArrayDeque.size != this.size) return false;
+            for(int i = 0; i < size; i++) {
+                if (get(i) != otherArrayDeque.get(i)) return false;
+            }
+            return true;
+        }
+        return false;
     }
 }

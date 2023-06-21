@@ -6,10 +6,56 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.*;
 
 public class ArrayDequeTest {
+
+    @Test
+    public void testEqualWithThreeElement() {
+        ArrayDeque<String> ad = new ArrayDeque<>();
+
+        ad.addFirst("one");
+        ad.addLast("two");
+        ad.addLast("three");
+
+        ArrayDeque<String> ad2 = new ArrayDeque<>();
+        ad2.addFirst("one");
+        ad2.addLast("two");
+        ad2.addLast("three");
+
+        assertTrue(ad.equals(ad2));
+    }
+
+    @Test
+    public void testEqualWithDiffOrder() {
+        ArrayDeque<String> ad = new ArrayDeque<>();
+
+        ad.addFirst("one");
+        ad.addLast("two");
+        ad.addLast("three");
+
+        ArrayDeque<String> ad2 = new ArrayDeque<>();
+        ad2.addFirst("one");
+        ad2.addLast("three");
+        ad2.addLast("two");
+
+        assertFalse(ad.equals(ad2));
+    }
+
+    @Test
+    public void testEqualWithDiffSize() {
+        ArrayDeque<String> ad = new ArrayDeque<>();
+
+        ad.addFirst("one");
+        ad.addLast("two");
+
+        ArrayDeque<String> ad2 = new ArrayDeque<>();
+        ad2.addFirst("one");
+        ad2.addLast("two");
+        ad2.addLast("three");
+
+        assertFalse(ad.equals(ad2));
+    }
 
     @Test
     public void testIteratorWithAlmostFullElements() {
