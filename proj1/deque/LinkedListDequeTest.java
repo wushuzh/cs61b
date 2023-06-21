@@ -176,4 +176,55 @@ public class LinkedListDequeTest {
         }
     }
 
+    @Test
+    public void testEqualsWithDiffSize() {
+        LinkedListDeque<String> lld1 = new LinkedListDeque<>();
+        LinkedListDeque<String> lld2 = new LinkedListDeque<>();
+
+        lld1.addLast("two");
+        lld1.addLast("three");
+
+        lld2.addLast("two");
+        lld2.addLast("three");
+        lld2.addFirst("one");
+
+        assertFalse(lld1.equals(lld2));
+        assertFalse(lld2.equals(lld1));
+    }
+
+    @Test
+    public void testEqualsWithThreeElements() {
+        LinkedListDeque<String> lld1 = new LinkedListDeque<>();
+        LinkedListDeque<String> lld2 = new LinkedListDeque<>();
+
+        lld1.addLast("two");
+        lld1.addLast("three");
+        lld1.addFirst("one");
+
+        lld2.addLast("two");
+        lld2.addLast("three");
+        lld2.addFirst("one");
+
+        assertTrue(lld1.equals(lld2));
+        assertTrue(lld2.equals(lld1));
+    }
+
+    @Test
+    public void testEqualsWithSameSizeDiffOrder() {
+        LinkedListDeque<String> lld1 = new LinkedListDeque<>();
+        LinkedListDeque<String> lld2 = new LinkedListDeque<>();
+
+        // two, three, one
+        lld1.addLast("one");
+        lld1.addLast("two");
+        lld1.addLast("three");
+
+        // one, two, three
+        lld2.addLast("one");
+        lld2.addLast("two");
+        lld2.addLast("oneoneone");
+
+        assertFalse(lld1.equals(lld2));
+        assertFalse(lld2.equals(lld1));
+    }
 }

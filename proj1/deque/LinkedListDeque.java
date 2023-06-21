@@ -139,6 +139,19 @@ public class LinkedListDeque<T> implements Iterable<T> {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof LinkedListDeque otherlld) {
+            if (otherlld.size != size) return false;
+            for(int i = 0; i < size; i++) {
+                if(get(i) != otherlld.get(i)) return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         LinkedListDeque<String> lld = new LinkedListDeque<>();
         lld.addFirst("one");
