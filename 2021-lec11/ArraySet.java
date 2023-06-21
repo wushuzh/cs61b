@@ -60,11 +60,27 @@ public class ArraySet<T> implements Iterable<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        String resultString = "{";
+        for(int i = 0; i < size; i++) {
+            resultString += items[i].toString();
+            if (i < size - 1) {
+                resultString += ",";
+            }
+        }
+        resultString += "}";
+        return  resultString;
+    }
+
     public static void main(String[] args) {
         ArraySet<String> as = new ArraySet<>();
         as.add("one");
         as.add("two");
         as.add("three");
+
+        System.out.println(as);
+
         System.out.println("Set size is " + as.size);
         as.add("two");
         System.out.println("Set size is still " + as.size);
