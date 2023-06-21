@@ -1,6 +1,8 @@
 package deque;
 
-public class LinkedListDeque<T> {
+import java.util.Iterator;
+
+public class LinkedListDeque<T> implements Iterable<T> {
 
     private Node sentFront;
     private Node sentBack;
@@ -112,6 +114,29 @@ public class LinkedListDeque<T> {
             p = p.next;
         }
         System.out.println(result);
+    }
+
+
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListDequeIterator();
+    }
+
+    private class LinkedListDequeIterator implements Iterator<T> {
+
+        private Node pointerNode = sentFront.next;
+
+        @Override
+        public boolean hasNext() {
+            return pointerNode != sentBack;
+        }
+
+        @Override
+        public T next() {
+            T returnItem = pointerNode.item;
+            pointerNode = pointerNode.next;
+            return returnItem;
+        }
     }
 
     public static void main(String[] args) {
