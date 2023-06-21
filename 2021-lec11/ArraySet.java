@@ -84,6 +84,20 @@ public class ArraySet<T> implements Iterable<T> {
         return  resultString;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof ArraySet otherArraySet) {
+            if (size != otherArraySet.size) return false;
+            // error 1: order of elements does not matter for SET
+            for(T t: this) {
+                if( !otherArraySet.contains(t)) return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         ArraySet<String> as = new ArraySet<>();
         as.add("one");
