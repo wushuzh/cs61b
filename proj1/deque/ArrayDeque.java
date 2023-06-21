@@ -1,6 +1,8 @@
 package deque;
 
-public class ArrayDeque<T> {
+import java.util.Iterator;
+
+public class ArrayDeque<T> implements Iterable<T> {
 
     private final int INITCAPACITY = 8;
     private T[] items;
@@ -146,5 +148,26 @@ public class ArrayDeque<T> {
             firstItemDex = calcRightDex(firstItemDex);
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new ArrayDequeIterator();
+    }
+
+    private class ArrayDequeIterator implements Iterator<T> {
+        int pos = calcRightDex(nextFirst);
+
+        @Override
+        public boolean hasNext() {
+            return pos != nextLast;
+        }
+
+        @Override
+        public T next() {
+            T returnItem = items[pos];
+            pos = calcRightDex(pos);
+            return returnItem;
+        }
     }
 }

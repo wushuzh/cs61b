@@ -2,12 +2,35 @@ package deque;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNull;
 
 public class ArrayDequeTest {
+
+    @Test
+    public void testIteratorWithAlmostFullElements() {
+        ArrayDeque<Integer> ad = new ArrayDeque<>();
+
+        for(int i = 0; i < 14; i++) {
+            ad.addLast(i);
+        }
+
+        // error 1: do not use  assertEquals in the forloop to validate iterable
+        // since default hasNext and next will not enter into loop in the first place
+        List<Integer> intsFirstToLast = new ArrayList<>();
+        for(int x : ad) {
+            intsFirstToLast.add(x);
+        }
+        assertEquals(14, intsFirstToLast.size());
+
+        for(int i = 0; i < 14; i++) {
+            assertEquals(i, (int) intsFirstToLast.get(i));
+        }
+    }
 
     @Test
     public void testEmptyArrayDeque() {
