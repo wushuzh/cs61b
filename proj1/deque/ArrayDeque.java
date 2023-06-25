@@ -4,7 +4,7 @@ import afu.org.checkerframework.checker.oigj.qual.O;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T> {
+public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     private final int INITCAPACITY = 8;
     private T[] items;
@@ -19,15 +19,12 @@ public class ArrayDeque<T> implements Iterable<T> {
         nextLast = nextFirst + 1;
     }
 
-
+    @Override
     public int size() {
         return size;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
+    @Override
     public void addLast(T item) {
         size++;
         items[nextLast] = item;
@@ -58,6 +55,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         items = newArray;
     }
 
+    @Override
     public void addFirst(T item) {
         size++;
         items[nextFirst] = item;
@@ -77,6 +75,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         return (index + length) % length;
     }
 
+    @Override
     public T removeLast() {
         // error 1: check if there is any elements existing
         if (size == 0) return null;
@@ -117,6 +116,7 @@ public class ArrayDeque<T> implements Iterable<T> {
         items = smallArray;
     }
 
+    @Override
     public T removeFirst() {
         if (size == 0) return null;
         size--;
@@ -134,12 +134,14 @@ public class ArrayDeque<T> implements Iterable<T> {
         return firstItem;
     }
 
+    @Override
     public T get(int index) {
         if (index >= size) return null;
         int itemDex = calcRightDex(nextFirst + index);
         return items[itemDex];
     }
 
+    @Override
     public void printDeque() {
 
         int firstItemDex = calcRightDex(nextFirst);
