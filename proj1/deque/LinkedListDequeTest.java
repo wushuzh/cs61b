@@ -184,9 +184,9 @@ public class LinkedListDequeTest {
         lld1.addLast("two");
         lld1.addLast("three");
 
-        lld2.addLast("two");
-        lld2.addLast("three");
-        lld2.addFirst("one");
+        lld2.addLast(new String("two"));
+        lld2.addLast(new String("three"));
+        lld2.addFirst(new String("one"));
 
         assertFalse(lld1.equals(lld2));
         assertFalse(lld2.equals(lld1));
@@ -201,9 +201,10 @@ public class LinkedListDequeTest {
         lld1.addLast("three");
         lld1.addFirst("one");
 
-        lld2.addLast("two");
-        lld2.addLast("three");
-        lld2.addFirst("one");
+        /* error 1: use new String so that "one" != "one" */
+        lld2.addLast(new String("two"));
+        lld2.addLast(new String("three"));
+        lld2.addFirst(new String("one"));
 
         assertTrue(lld1.equals(lld2));
         assertTrue(lld2.equals(lld1));
@@ -220,9 +221,9 @@ public class LinkedListDequeTest {
         lld1.addLast("three");
 
         // one, two, three
-        lld2.addLast("one");
-        lld2.addLast("two");
-        lld2.addLast("oneoneone");
+        lld2.addLast(new String("one"));
+        lld2.addLast(new String("three"));
+        lld2.addLast(new String("two"));
 
         assertFalse(lld1.equals(lld2));
         assertFalse(lld2.equals(lld1));

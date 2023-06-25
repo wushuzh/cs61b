@@ -19,9 +19,9 @@ public class ArrayDequeTest {
         ad.addLast("three");
 
         ArrayDeque<String> ad2 = new ArrayDeque<>();
-        ad2.addFirst("one");
-        ad2.addLast("two");
-        ad2.addLast("three");
+        ad2.addFirst(new String("one"));
+        ad2.addLast(new String("two"));
+        ad2.addLast(new String("three"));
 
         assertTrue(ad.equals(ad2));
     }
@@ -35,9 +35,9 @@ public class ArrayDequeTest {
         ad.addLast("three");
 
         ArrayDeque<String> ad2 = new ArrayDeque<>();
-        ad2.addFirst("one");
-        ad2.addLast("three");
-        ad2.addLast("two");
+        ad2.addFirst(new String("one"));
+        ad2.addLast(new String("three"));
+        ad2.addLast(new String("two"));
 
         assertFalse(ad.equals(ad2));
     }
