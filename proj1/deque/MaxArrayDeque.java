@@ -35,7 +35,9 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
         T maxItem = get(0);
         for (int i = 1; i < size(); i++) {
             int cmp = c.compare(get(i), maxItem);
-            if (cmp > 0) maxItem = get(i);
+            if (cmp > 0) {
+                maxItem = get(i);
+            }
         }
         return maxItem;
     }

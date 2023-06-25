@@ -9,11 +9,11 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private int size;
 
     private class Node {
-        public T item;
-        public Node next;
-        public Node prev;
+        private T item;
+        private Node next;
+        private Node prev;
 
-        public Node(Node p, T i, Node n) {
+        Node(Node p, T i, Node n) {
             prev = p;
             item = i;
             next = n;
@@ -122,7 +122,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
 
         lldOneLess.sentFront.next = secondNode;
         lldOneLess.sentBack = lld.sentBack;
-        return getRecursive(lldOneLess, i-1);
+        return getRecursive(lldOneLess, i - 1);
 
     }
 
@@ -159,22 +159,22 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return returnItem;
         }
     }
-/*  autograder complains pattern matching in instanceof is a preview feature and is disabled by default
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o instanceof LinkedListDeque otherlld) {
-            if (otherlld.size != size) return false;
+        if (o instanceof Deque otherDeque) {
+            if (otherDeque.size() != size) return false;
             for(int i = 0; i < size; i++) {
-                if(get(i) != otherlld.get(i)) return false;
+                if(!get(i).equals(otherDeque.get(i))) return false;
             }
             return true;
         }
         return false;
-    }*/
+    }
 
-    @Override
-    public boolean equals(Object o) {
+
+    public boolean equalsInOldWay(Object o) {
         if (this == o) {
             return true;
         }
@@ -185,13 +185,14 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return false;
         }
 
-        LinkedListDeque<T> otherLinkedListDeque = (LinkedListDeque<T>) o;
-        if (otherLinkedListDeque.size() != size) {
+        /* cast Object to Deque based on requirement */
+        Deque<T> otherDeque = (Deque<T>) o;
+        if (otherDeque.size() != size) {
             return false;
         }
 
-        for(int i = 0; i < size; i++) {
-            if (!otherLinkedListDeque.get(i).equals(get(i))) {
+        for (int i = 0; i < size; i++) {
+            if (!otherDeque.get(i).equals(get(i))) {
                 return false;
             }
         }
