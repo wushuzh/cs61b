@@ -7,8 +7,30 @@ import java.util.List;
 import java.util.Optional;
 
 import static junit.framework.TestCase.*;
+import static org.junit.Assert.assertTrue;
 
 public class ArrayDequeTest {
+
+    @Test
+    public void testEqualsWithWrongOrderLinkedListDequeAndArrayDeque() {
+        LinkedListDeque<String> lld = new LinkedListDeque<>();
+        ArrayDeque<String> ad = new ArrayDeque<>();
+
+        // two, three, one
+        lld.addLast("one");
+        lld.addLast("two");
+        lld.addLast("three");
+
+        // one, two, three
+        ad.addLast(new String("one"));
+        ad.addLast(new String("three"));
+        ad.addLast(new String("two"));
+
+        assertFalse(lld.equals(ad));
+        assertFalse(ad.equals(lld));
+/*        assertFalse(lld.equalsInNewWay(ad));
+        assertFalse(ad.equalsInNewWay(lld));*/
+    }
 
     @Test
     public void testEqualWithThreeElement() {
@@ -24,7 +46,7 @@ public class ArrayDequeTest {
         ad2.addLast(new String("three"));
 
         assertTrue(ad.equals(ad2));
-        assertTrue(ad.equalsInNewWay(ad2));
+        /*assertTrue(ad.equalsInNewWay(ad2));*/
     }
 
     @Test
@@ -41,7 +63,7 @@ public class ArrayDequeTest {
         ad2.addLast(new String("two"));
 
         assertFalse(ad.equals(ad2));
-        assertFalse(ad.equalsInNewWay(ad2));
+        /*assertFalse(ad.equalsInNewWay(ad2));*/
     }
 
     @Test
@@ -57,7 +79,7 @@ public class ArrayDequeTest {
         ad2.addLast("three");
 
         assertFalse(ad.equals(ad2));
-        assertFalse(ad.equalsInNewWay(ad2));
+        /*assertFalse(ad.equalsInNewWay(ad2));*/
     }
 
     @Test

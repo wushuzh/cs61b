@@ -247,11 +247,11 @@ public class LinkedListDequeTest {
 
         // one, two, three
         ad.addLast(new String("one"));
-        ad.addLast(new String("three"));
         ad.addLast(new String("two"));
+        ad.addLast(new String("three"));
 
-        assertFalse(lld.equals(ad));
-        assertFalse(ad.equals(lld));
+        assertTrue(lld.equals(ad));
+        assertTrue(ad.equals(lld));
 /*        assertFalse(lld.equalsInNewWay(ad));
         assertFalse(ad.equalsInNewWay(lld));*/
     }
