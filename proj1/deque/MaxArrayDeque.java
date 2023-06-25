@@ -15,9 +15,11 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
      *  If the MaxArrayDeque is empty, simply return null
      */
     public T max() {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
         T maxItem = get(0);
-        for(int i = 1; i < size(); i++) {
+        for (int i = 1; i < size(); i++) {
             int cmp = embeddedComparator.compare(get(i), maxItem);
             if (cmp > 0) {
                 maxItem = get(i);
@@ -27,9 +29,11 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
     }
 
     public T max(Comparator<T> c) {
-        if (isEmpty()) return null;
+        if (isEmpty()) {
+            return null;
+        }
         T maxItem = get(0);
-        for(int i = 1; i < size(); i++) {
+        for (int i = 1; i < size(); i++) {
             int cmp = c.compare(get(i), maxItem);
             if (cmp > 0) maxItem = get(i);
         }

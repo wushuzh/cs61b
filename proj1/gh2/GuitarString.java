@@ -24,7 +24,7 @@ public class GuitarString {
         // Your should initially fill your buffer array with zeros.
         capacity = (int) Math.round(SR / frequency);
         buffer = new LinkedListDeque<>();
-        for (int i = 0; i < capacity; i++) {
+        for(int i = 0; i < capacity; i++) {
             buffer.addFirst(0.0);
         }
     }
@@ -65,4 +65,3 @@ public class GuitarString {
         return buffer.get(0);
     }
 }
-    // TODO: Remove all comments that say TODO when you're done.
