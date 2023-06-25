@@ -160,8 +160,13 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
+    /*
+    autograde message:
+    error: pattern matching in instanceof
+           is a preview feature and is disabled by default
+     */
+    /* @Override */
+    public boolean equalsInNewWay(Object o) {
         if (this == o) return true;
         if (o instanceof Deque otherDeque) {
             if (otherDeque.size() != size) return false;
@@ -174,7 +179,8 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     }
 
 
-    public boolean equalsInOldWay(Object o) {
+    @Override
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }

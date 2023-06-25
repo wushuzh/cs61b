@@ -24,7 +24,7 @@ public class ArrayDequeTest {
         ad2.addLast(new String("three"));
 
         assertTrue(ad.equals(ad2));
-        assertTrue(ad.equalsInOldWay(ad2));
+        assertTrue(ad.equalsInNewWay(ad2));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class ArrayDequeTest {
         ad2.addLast(new String("two"));
 
         assertFalse(ad.equals(ad2));
-        assertFalse(ad.equalsInOldWay(ad2));
+        assertFalse(ad.equalsInNewWay(ad2));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ArrayDequeTest {
         ad2.addLast("three");
 
         assertFalse(ad.equals(ad2));
-        assertFalse(ad.equalsInOldWay(ad2));
+        assertFalse(ad.equalsInNewWay(ad2));
     }
 
     @Test

@@ -189,8 +189,13 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
       Read https://www.javatpoint.com/downcasting-with-instanceof-operator
       for more information)
       */
-    @Override
-    public boolean equals(Object o) {
+    /*
+    autograde message:
+    error: pattern matching in instanceof
+           is a preview feature and is disabled by default
+    */
+    /* @Override */
+    public boolean equalsInNewWay(Object o) {
         if (this == o) return true;
         /* cast Object to Deque based on requirement */
         if (o instanceof Deque otherDeque) {
@@ -206,7 +211,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         return false;
     }
 
-    public boolean equalsInOldWay(Object o) {
+    @Override
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
