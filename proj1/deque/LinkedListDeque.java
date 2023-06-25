@@ -149,7 +149,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return returnItem;
         }
     }
-
+/*  autograder complains pattern matching in instanceof is a preview feature and is disabled by default
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -161,6 +161,24 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return true;
         }
         return false;
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (o.getClass() != this.getClass()) return false;
+
+        LinkedListDeque<T> otherLinkedListDeque = (LinkedListDeque<T>) o;
+        if (otherLinkedListDeque.size() != size) return false;
+
+        for(int i = 0; i < size; i++) {
+            if (otherLinkedListDeque.get(i) != get(i)) {
+                return false;
+            }
+        }
+        return true;
+
     }
 
     public static void main(String[] args) {

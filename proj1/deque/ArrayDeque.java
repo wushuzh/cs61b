@@ -175,6 +175,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         }
     }
 
+/*  autograder complains pattern matching in instanceof is a preview feature and is disabled by default
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -186,5 +187,24 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return true;
         }
         return false;
+    }
+    */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        if (o.getClass() != this.getClass()) {
+            return false;
+        }
+
+        ArrayDeque<T> otherArrayDeque = (ArrayDeque<T>) o;
+        if (otherArrayDeque.size() != size) return false;
+        for(int i = 0; i < size; i++) {
+            if (otherArrayDeque.get(i) != get(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
