@@ -165,7 +165,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     error: pattern matching in instanceof
            is a preview feature and is disabled by default
      */
-    /* @Override */
+/*    @Override
     public boolean equalsInNewWay(Object o) {
         if (this == o) return true;
         if (o instanceof Deque otherDeque) {
@@ -176,7 +176,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
             return true;
         }
         return false;
-    }
+    }*/
 
 
     @Override

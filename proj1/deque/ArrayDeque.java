@@ -194,14 +194,15 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     error: pattern matching in instanceof
            is a preview feature and is disabled by default
     */
-    /* @Override */
+
+/*    @Override
     public boolean equalsInNewWay(Object o) {
         if (this == o) return true;
-        /* cast Object to Deque based on requirement */
+        *//* cast Object to Deque based on requirement *//*
         if (o instanceof Deque otherDeque) {
             if (otherDeque.size() != this.size) return false;
             for(int i = 0; i < size; i++) {
-                /* use Generic T equals to test content is same or not */
+                *//* use Generic T equals to test content is same or not *//*
                 if (!get(i).equals(otherDeque.get(i))) {
                     return false;
                 }
@@ -209,7 +210,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return true;
         }
         return false;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {

@@ -190,8 +190,8 @@ public class LinkedListDequeTest {
 
         assertFalse(lld1.equals(lld2));
         assertFalse(lld2.equals(lld1));
-        assertFalse(lld1.equalsInNewWay(lld2));
-        assertFalse(lld2.equalsInNewWay(lld1));
+/*        assertFalse(lld1.equalsInNewWay(lld2));
+        assertFalse(lld2.equalsInNewWay(lld1));*/
     }
 
     @Test
@@ -210,8 +210,8 @@ public class LinkedListDequeTest {
 
         assertTrue(lld1.equals(lld2));
         assertTrue(lld2.equals(lld1));
-        assertTrue(lld1.equalsInNewWay(lld2));
-        assertTrue(lld2.equalsInNewWay(lld1));
+/*        assertTrue(lld1.equalsInNewWay(lld2));
+        assertTrue(lld2.equalsInNewWay(lld1));*/
     }
 
     @Test
@@ -231,8 +231,8 @@ public class LinkedListDequeTest {
 
         assertFalse(lld1.equals(lld2));
         assertFalse(lld2.equals(lld1));
-        assertFalse(lld1.equalsInNewWay(lld2));
-        assertFalse(lld2.equalsInNewWay(lld1));
+/*        assertFalse(lld1.equalsInNewWay(lld2));
+        assertFalse(lld2.equalsInNewWay(lld1));*/
     }
 
     @Test
@@ -252,7 +252,7 @@ public class LinkedListDequeTest {
 
         assertFalse(lld.equals(ad));
         assertFalse(ad.equals(lld));
-        assertFalse(lld.equalsInNewWay(ad));
-        assertFalse(ad.equalsInNewWay(lld));
+/*        assertFalse(lld.equalsInNewWay(ad));
+        assertFalse(ad.equalsInNewWay(lld));*/
     }
 }
